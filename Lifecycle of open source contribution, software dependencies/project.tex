@@ -22,10 +22,11 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{fontawesome}
+\usepackage{multirow}
 
 \title[Open Source Development Course]{Open Source Development Course\\ \small Lifecycle of open source contribution, project management}
 \author{Vojtěch Trefný\\ \small \texttt{vtrefny@redhat.com}\\}
-\date{24.~3.~2021}
+\date{16.~3.~2022}
  \institute{\faTwitter\, \href{https://twitter.com/vojtechtrefny}{twitter.com/vojtechtrefny} \\ \faGithub\, \href{https://github.com/vojtechtrefny}{github.com/vojtechtrefny} \\ \faGitlab\ \href{https://gitlab.com/vtrefny}{gitlab.com/vtrefny}}
 
 \begin{document}
@@ -369,8 +370,102 @@ To github.com:vojtechtrefny/dasbus.git
 
 \end{frame}
 
+\begin{frame}
+	\frametitle{Releases}
+	
+\begin{block}{}
+		\begin{itemize}
+			\item After the contributions is merged, it should be included in the next release.
+			\item Depending on project release schedule and development state, this might happen immediately or take few weeks or months.
+			\item At some stages, projects might not accept other contributions than bug fixes and new features might be accepted only for development branches/releases or not at all.
+		\end{itemize}
+\end{block}
+\begin{figure}[ht!]
+	\begin{center}
+  	  \includegraphics[width=0.7\textwidth]{img/ubuntu-releases.png}
+	\end{center}
+\end{figure}
 
+\end{frame}
 
+\begin{frame}
+	\frametitle{Release life cycle}
+	
+\begin{columns}
+\begin{column}{0.5\textwidth}
+   	\begin{block}{\color{orange}{1. Planning}}
+   		\vspace{1mm}
+Gathering use cases. Product and objectives definition.
+	\end{block}
+	\begin{block}{\color{orange}{2. Pre-Alpha}}
+   		\vspace{1mm}
+Early development, usually not meant for public.
+     \end{block}
+         \begin{block}{\color{orange}{3. Alpha/Beta}}
+   		\vspace{1mm}
+Pre-releases for testing purposes and early adopters.
+     \end{block}
+     
+\end{column}
+\begin{column}{0.5\textwidth} 
+\begin{block}{\color{orange}{4. Release candidate (RC)}}
+   		\vspace{1mm}
+Candidate for the stable release.\\~
+     \end{block}
+      \begin{block}{\color{orange}{5. Stable release}}
+   		\vspace{1mm}
+Stable release targeted for end users.
+     \end{block}
+      \begin{block}{\color{orange}{6. Mature project/Maintenance}}
+   		\vspace{1mm}
+Maintenance and bug fixing. EOL or continuous development.
+     \end{block}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Fedora release cycle}
+
+\begin{center}
+\begin{tabular}{l c c}
+    Rawhide starts Fedora Linux 37 development & 2022-02-08 \\
+    Proposal submission deadline (System Wide Changes) & 2022-06-28 \\
+    Proposal submission deadline (Self Contained Changes) & 2022-07-19 \\
+    Completion deadline (testable) & 2022-08-09  \\
+    Branch Fedora Linux 37 from Rawhide & 2022-08-09 \\
+    Change Checkpoint: 100 \% Code Complete Deadline & 2022-08-23  \\
+    Beta Release & 2022-09-13 \\
+    Final Freeze  & 2022-10-04 \\
+    Final & 2022-10-18 \\
+    Rawhide starts Fedora Linux 38 development  &  2022-08-09 \\
+    Fedora Linux 37 EOL  & 2023-11-14 \\
+\end{tabular}
+\end{center}
+
+\tiny{\url{https://fedorapeople.org/groups/schedule/f-37/f-37-key-tasks.html}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Fedora release cycle}
+
+\begin{center}
+\begin{tabular}{c l c c}
+  \multirow{3}{*}{\color{orange}Planning} & Rawhide starts Fedora Linux 37 development & 2022-02-08 \\
+   & Proposal submission deadline (System Wide Changes) & 2022-06-28 \\
+   & Proposal submission deadline (Self Contained Changes) & 2022-07-19 \\ \hline
+  \multirow{2}{*}{\color{orange}Pre-alpha}   & Completion deadline (testable) & 2022-08-09  \\
+   & Branch Fedora Linux 37 from Rawhide & 2022-08-09 \\ \hline
+   \multirow{2}{*}{\color{orange}Alpha/Beta}  & Change Checkpoint: 100 \% Code Complete Deadline & 2022-08-23  \\
+   & Beta Release & 2022-09-13 \\ \hline
+  \color{orange}RC  & Final Freeze  & 2022-10-04 \\ \hline
+  \color{orange}Stable release & Final & 2022-10-18 \\ \hline
+  \multirow{2}{*}{\color{orange}Maintenance}  & Rawhide starts Fedora Linux 38 development  &  2022-08-09 \\
+   & Fedora Linux 37 EOL  & 2023-11-14 \\
+\end{tabular}
+\end{center}
+\end{frame}
 
 
 \section{Software dependencies}
@@ -688,6 +783,38 @@ Installing collected packages: mccabe, isort, toml, wrapt, lazy-object-proxy,
 \end{columns}
 
 \footnotetext[6]{\tiny{\url{https://heartbleed.com/}}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Log4Shell}
+	
+\begin{columns}
+\begin{column}{0.68\textwidth}
+
+		\begin{itemize}
+			\item Security vulnerability (\emph{remote code execution} in Log4j, Java logging framework, discovered in November 2021 (disclosed in December). \footnotemark~\footnotemark
+		\end{itemize}
+\end{column}
+
+\begin{column}{0.25\textwidth}
+	\begin{figure}[ht!]
+	\begin{center}
+  	  \includegraphics[width=0.95\textwidth]{img/log4j.png}
+	\end{center}
+	\end{figure}
+\end{column}
+\end{columns}
+
+		\begin{itemize}
+			\item Affected many projects including AWS, Cloudflare and iCloud. Up to 93 \% cloud environments were affected.
+			\item Similarly to Heartbleed, Log4Shell again draw attention to open source projects that are heavily depended on but not properly staffed and financed.\footnotemark
+			\item Log4Shell being way smaller project than OpenSSL and often being bundled in bigger project also showed how hard is to track and manage dependencies.
+		\end{itemize}
+
+\footnotetext[7]{\tiny{\url{https://www.nukib.cz/cs/infoservis/hrozby/1781-upozorneni-na-zranitelnost-apache-log4j-log4shell/}}}
+\footnotetext[8]{\tiny{\url{https://www.nukib.cz/cs/infoservis/hrozby/1785-nukib-vydava-reaktivni-opatreni-v-souvislosti-se-zranitelnosti-log4shell/}}}
+\footnotetext[9]{\tiny{\url{https://gizmodo.com/after-log4j-open-source-software-is-now-a-national-sec-1848356403}}}
+
 \end{frame}
 
 \begin{frame}
