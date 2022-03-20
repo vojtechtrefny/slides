@@ -17,7 +17,7 @@
 
 \title[Open Source Development Course]{Open Source Development Course\\ \small Continuous integration and deployment (CI/CD)}
 \author{Vojtěch Trefný\\ \small \texttt{vtrefny@redhat.com}\\}
-\date{31.~3.~2021}
+\date{23.~3.~2022}
  \institute{\faTwitter\, \href{https://twitter.com/vojtechtrefny}{twitter.com/vojtechtrefny} \\ \faGithub\, \href{https://github.com/vojtechtrefny}{github.com/vojtechtrefny} \\ \faGitlab\ \href{https://gitlab.com/vtrefny}{gitlab.com/vtrefny}}
 
 \begin{document}
@@ -362,52 +362,6 @@ div.py    5       1     80%     3
 \section{CI Tools \\ \small Demo}
 
 \begin{frame}
-	\frametitle{Travis CI}
-	
-	\begin{columns}
-\begin{column}{0.6\textwidth}
-	\begin{block}{}
-		\begin{itemize}
-			\item Probably (still) the most popular CI service nowadays.
-			\item Can be integrated into your projects on GitHub.
-			\item Free (with limits) for opensource projects.
-			\item Configured using \texttt{.travis.yml} file in the project
-			\item Travis drastically limited free plans for opensource projects in 2020\footnotemark.
-			\item \color{blue}{\url{https://travis-ci.org}}
-		\end{itemize}
-	\end{block}
-\end{column}
-\begin{column}{0.4\textwidth}
-	\begin{figure}[ht!]
-	\begin{center}
-  	  \includegraphics[width=0.5\textwidth]{img/travis-logo.png}
-	\end{center}
-	\end{figure}
-\end{column}
-\end{columns}
-
-\footnotetext[12]{\tiny\url{https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing}}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Travis CI}
-	\begin{figure}[ht!]
-	\begin{center}
-  	  \includegraphics[width=0.9\textwidth]{img/travis-1.png}
-	\end{center}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Travis CI}
-	\begin{figure}[ht!]
-	\begin{center}
-  	  \includegraphics[width=0.9\textwidth]{img/travis-3.png}
-	\end{center}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
 	\frametitle{GitHub Actions}
 	
 	\begin{columns}
@@ -537,6 +491,33 @@ div.py    5       1     80%     3
   	  \includegraphics[width=0.9\textwidth]{img/packit-1.png}
 	\end{center}
 	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Travis CI}
+	
+	\begin{columns}
+\begin{column}{0.6\textwidth}
+	\begin{block}{}
+		\begin{itemize}
+			\item Used to be the most popular CI service for open source products.
+			\item Can be integrated into your projects on GitHub and GitLab.
+			\item Configured using \texttt{.travis.yml} file in the project
+			\item Unfortunately Travis drastically limited free plans for open source projects in 2020\footnotemark.
+			\item \color{blue}{\url{https://travis-ci.com}}
+		\end{itemize}
+	\end{block}
+\end{column}
+\begin{column}{0.4\textwidth}
+	\begin{figure}[ht!]
+	\begin{center}
+  	  \includegraphics[width=0.5\textwidth]{img/travis-logo.png}
+	\end{center}
+	\end{figure}
+\end{column}
+\end{columns}
+
+\footnotetext[12]{\tiny\url{https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
