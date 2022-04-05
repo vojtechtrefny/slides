@@ -175,6 +175,25 @@ $\color{blue}{\#}$ 1167|                        output);
 
 \end{frame}
 
+\begin{frame}
+	\frametitle{Runtime Analysis}
+
+	\begin{block}{}
+		\begin{itemize}
+			\item Tools that can identify bugs during runtime.
+			\item Needs the code to actually run, either through manual testing or when running the test suite.
+				\begin{itemize}
+					\item Valgrind -- memory management and threading bugs\footnotemark
+					\item ASan -- \emph{AddressSanitizer} -- memory management bugs (buffer overflow, dangling pointers...). Part of the LLVM Analyzers project, integrated into \texttt{gcc} and \texttt{clang}\footnotemark
+				\end{itemize}
+		\end{itemize}
+	\end{block}
+
+\footnotetext[5]{\tiny\url{https://valgrind.org/}}
+\footnotetext[6]{\tiny\url{https://github.com/google/sanitizers/wiki/AddressSanitizer}}
+
+\end{frame}
+
 \section{Code Style}
 
 \begin{frame}
@@ -188,9 +207,9 @@ $\color{blue}{\#}$ 1167|                        output);
 		\end{itemize}
 	\end{block}
 
-\footnotetext[5]{\tiny\url{https://www.python.org/dev/peps/pep-0008/}}
-\footnotetext[6]{\tiny\url{https://www.kernel.org/doc/html/v5.11/process/coding-style.html}}
-\footnotetext[7]{\tiny\url{https://developer.gnome.org/programming-guidelines/stable/c-coding-style.html.en}}
+\footnotetext[7]{\tiny\url{https://www.python.org/dev/peps/pep-0008/}}
+\footnotetext[8]{\tiny\url{https://www.kernel.org/doc/html/v5.11/process/coding-style.html}}
+\footnotetext[9]{\tiny\url{https://developer.gnome.org/programming-guidelines/stable/c-coding-style.html.en}}
 \end{frame}
 
 \begin{frame}
@@ -301,21 +320,22 @@ blivetgui/blivetgui.py:30:1: E402 module level import not at top of file
 \begin{frame}[fragile]
 	\frametitle{Coverage}
 	
-	\begin{figure}[ht!]
-	\begin{center}
-  	  \includegraphics[width=5cm]{img/coverage-test.png}
-	\end{center}
-	\end{figure}
-	
 \begin{center}
 \begin{lstlisting}[frame=none, basicstyle=\ttfamily\small, columns=fullflexible, keepspaces=true]
-$ coverage3 report -m
-Name      Stmts   Miss  Cover   Missing
----------------------------------------
-div.py    5       1     80%     3
+Name   Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------
+a.py     487      9    178     11    97%   206, 268, 377->376, 393->392, 418, 
+                                           448, 452, 460, 660, 729, 746, 
+                                           889->891, 891->894
+b.py     220      8     74      8    95%   81, 173, 193->197, 279, 340, 342, 346
+c.py      19      9      8      2    44%   35-36, 50->48, 53, 60-70
+d.py       5      0      6      1    91%   31->exit
+e.py      46      0      4      0   100%
+...
+--------------------------------------------------------------------------------
+TOTAL   3600   1477   1381    100    56%
 \end{lstlisting}
 	
-\color{red}{Resulting coverage is 80 \% because 1 of 5 statements is not covered.}
 \end{center}
 \end{frame}
 
@@ -400,6 +420,40 @@ div.py    5       1     80%     3
 	\begin{figure}[ht!]
 	\begin{center}
   	  \includegraphics[width=0.9\textwidth]{img/gh-actions-2.png}
+	\end{center}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{GitLab CI}
+	
+	\begin{columns}
+\begin{column}{0.6\textwidth}
+	\begin{block}{}
+		\begin{itemize}
+			\item CI/CD automation integrated into GitLab.
+			\item Configuration is done with a YAML file in the repository.
+			\item Pipleines/tests can run either on infastructure provided by GitLab or on custom runners.
+			\item \color{blue}{\url{https://docs.gitlab.com/ee/ci/}}
+		\end{itemize}
+	\end{block}
+\end{column}
+\begin{column}{0.4\textwidth}
+	\begin{figure}[ht!]
+	\begin{center}
+  	  \includegraphics[width=0.5\textwidth]{img/gitlab-logo.png}
+	\end{center}
+	\end{figure}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{GitLab CI}
+	\begin{figure}[ht!]
+	\begin{center}
+  	  \includegraphics[width=0.8\textwidth]{img/gitlab-ci-1.png}
 	\end{center}
 	\end{figure}
 \end{frame}
